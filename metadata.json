@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Heba El-Komy | د. هبة الكومي",
+  "description": "استشاري الجراحة العامة وجراحات المناظير والسمنة المفرطة - الموقع الرسمي للدكتورة هبة الكومي مع حجز المواعيد والاستشارات الطبية",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
