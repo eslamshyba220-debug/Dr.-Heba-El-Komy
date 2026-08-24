@@ -76,11 +76,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
           </div>
 
           {/* Right / Overlapping Image Showcase (5 cols) */}
-          <div data-reveal="scale" style={{ '--reveal-delay': '120ms' } as React.CSSProperties} className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               {/* Asymmetric Outer Frame */}
-              <div data-reveal className="image-reveal relative rounded-2xl overflow-hidden border border-[#70B0B0]/30 shadow-[0_20px_40px_rgba(24,51,51,0.06)] bg-white">
+              <div className="relative rounded-2xl overflow-hidden border border-[#70B0B0]/30 shadow-[0_20px_40px_rgba(24,51,51,0.06)] bg-white">
                 <img
                   src="/2.jpg"
                   alt="د. هبة الكومي"
