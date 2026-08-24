@@ -17,6 +17,7 @@ import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { MobileActions } from './components/MobileActions';
+import { MotionSystem } from './components/MotionSystem';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('ar');
@@ -46,6 +47,7 @@ export default function App() {
 
   return (
     <div className={`min-h-screen bg-[#FAF9F6] text-[#173333] selection:bg-[#70B0B0]/25 selection:text-[#173333] ${lang === 'ar' ? 'font-alexandria' : 'font-sans'}`}>
+      <MotionSystem />
       {/* Navigation Header */}
       <Header
         lang={lang}

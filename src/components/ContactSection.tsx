@@ -11,7 +11,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
   const t = CONTENT[lang].contact;
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-[#FAF9F6] relative border-t border-[#183333]/10">
+    <section id="contact" data-reveal className="py-24 lg:py-32 bg-[#FAF9F6] relative border-t border-[#183333]/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Header with Number */}
@@ -165,7 +165,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                 href="https://www.google.com/maps/search/?api=1&query=505%20El-Horreya%20Road%2C%20Bolkly%2C%20Alexandria%2C%20Egypt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-[#183333] hover:bg-[#112525] text-white py-3.5 px-4 rounded-xl font-medium text-sm transition-colors"
+                className="premium-cta w-full flex items-center justify-center gap-2 bg-[#183333] hover:bg-[#112525] text-white py-3.5 px-4 rounded-xl font-medium text-sm transition-colors"
               >
                 <span>{t.mapButton}</span>
                 <ExternalLink className="w-4 h-4 text-[#70B0B0]" />

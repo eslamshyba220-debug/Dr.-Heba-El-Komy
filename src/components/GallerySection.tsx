@@ -17,7 +17,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
   const techItem = items[2];
 
   return (
-    <section id="gallery" className="py-24 lg:py-32 bg-[#FAF9F6] relative overflow-hidden border-t border-[#183333]/10">
+    <section id="gallery" data-reveal className="py-24 lg:py-32 bg-[#FAF9F6] relative overflow-hidden border-t border-[#183333]/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
@@ -49,6 +49,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
           {heroItem && (
             <div
               id={`gallery-hero-${heroItem.id}`}
+              data-reveal
               onClick={() => setSelectedItem(heroItem)}
               className="lg:col-span-7 group relative rounded-2xl overflow-hidden cursor-pointer shadow-[0_15px_40px_rgba(24,51,51,0.08)] border border-[#183333]/10 bg-black"
             >
@@ -88,6 +89,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
             {doctorItem && (
               <div
                 id={`gallery-item-${doctorItem.id}`}
+                data-reveal
+                style={{ '--reveal-delay': '100ms' } as React.CSSProperties}
                 onClick={() => setSelectedItem(doctorItem)}
                 className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-[0_10px_30px_rgba(24,51,51,0.06)] border border-[#183333]/10 bg-black"
               >
@@ -113,6 +116,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
             {techItem && (
               <div
                 id={`gallery-item-${techItem.id}`}
+                data-reveal
+                style={{ '--reveal-delay': '180ms' } as React.CSSProperties}
                 onClick={() => setSelectedItem(techItem)}
                 className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-[0_10px_30px_rgba(24,51,51,0.06)] border border-[#183333]/10 bg-black"
               >

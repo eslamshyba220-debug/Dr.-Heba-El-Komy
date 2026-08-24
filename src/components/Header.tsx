@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onToggleLang, onBookClick 
   return (
     <header
       id="main-header"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`header-enter fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-[#FAF9F6]/95 backdrop-blur-md border-b border-[#70B0B0]/20 py-3 shadow-[0_4px_20px_rgba(23,51,51,0.03)]'
           : 'bg-[#FAF9F6]/90 backdrop-blur-xs py-4 sm:py-5 border-b border-[#70B0B0]/20'
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onToggleLang, onBookClick 
             <a
               key={link.href}
               href={link.href}
-              className="whitespace-nowrap text-[11px] 2xl:text-xs font-medium text-[#173333]/85 hover:text-[#70B0B0] transition-colors duration-200"
+              className="editorial-link whitespace-nowrap text-[11px] 2xl:text-xs font-medium text-[#173333]/85 hover:text-[#70B0B0] transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onToggleLang, onBookClick 
           <button
             id="header-book-btn"
             onClick={onBookClick}
-            className="whitespace-nowrap bg-[#70B0B0] text-white px-5 2xl:px-7 py-2.5 rounded-[10px] text-xs 2xl:text-sm font-semibold hover:bg-[#183333] transition-all duration-300 cursor-pointer shadow-xs"
+            className="premium-cta whitespace-nowrap bg-[#70B0B0] text-white px-5 2xl:px-7 py-2.5 rounded-[10px] text-xs 2xl:text-sm font-semibold hover:bg-[#183333] transition-all duration-300 cursor-pointer shadow-xs"
           >
             {t.bookNow}
           </button>

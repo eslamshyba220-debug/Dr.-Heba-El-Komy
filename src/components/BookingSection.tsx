@@ -88,7 +88,7 @@ Please confirm the appointment details with the clinic. Thank you.`;
   };
 
   return (
-    <section id="booking" className="py-24 lg:py-32 bg-[#70B0B0] text-white relative overflow-hidden">
+    <section id="booking" data-reveal className="py-24 lg:py-32 bg-[#70B0B0] text-white relative overflow-hidden">
       {/* Subtle Background Pattern */}
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-black/10 blur-3xl pointer-events-none" />
@@ -280,7 +280,7 @@ Please confirm the appointment details with the clinic. Thank you.`;
                 <button
                   id="submit-booking-wa-btn"
                   type="submit"
-                  className="w-full flex items-center justify-center gap-3 bg-[#183333] hover:bg-[#112525] text-white py-4 px-6 rounded-xl font-bold text-base transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
+                  className="premium-cta w-full flex items-center justify-center gap-3 bg-[#183333] hover:bg-[#112525] text-white py-4 px-6 rounded-xl font-bold text-base transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
                 >
                   <MessageSquare className="w-5 h-5 text-[#70B0B0]" />
                   <span>{t.form.submitButton}</span>

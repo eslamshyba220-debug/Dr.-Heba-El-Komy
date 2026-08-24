@@ -10,7 +10,7 @@ export const Principles: React.FC<PrinciplesProps> = ({ lang }) => {
   const t = CONTENT[lang].principles;
 
   return (
-    <section id="principles" className="py-24 lg:py-32 bg-[#FAF9F6] relative border-t border-b border-[#183333]/10">
+    <section id="principles" data-reveal className="py-24 lg:py-32 bg-[#FAF9F6] relative border-t border-b border-[#183333]/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Number & Eyebrow */}
@@ -44,6 +44,8 @@ export const Principles: React.FC<PrinciplesProps> = ({ lang }) => {
             <div
               key={index}
               id={`principle-item-${index}`}
+              data-reveal
+              style={{ '--reveal-delay': `${index * 80}ms` } as React.CSSProperties}
               className="space-y-4 pt-6 border-t-2 border-[#70B0B0]/40 transition-all duration-300 hover:border-[#70B0B0]"
             >
               {/* Number */}

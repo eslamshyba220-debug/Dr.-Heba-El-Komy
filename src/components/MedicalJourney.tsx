@@ -10,7 +10,7 @@ export const MedicalJourney: React.FC<MedicalJourneyProps> = ({ lang }) => {
   const t = CONTENT[lang].journey;
 
   return (
-    <section id="journey" className="py-24 lg:py-32 bg-white relative overflow-hidden">
+    <section id="journey" data-reveal className="py-24 lg:py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Header with Number */}
@@ -39,13 +39,15 @@ export const MedicalJourney: React.FC<MedicalJourneyProps> = ({ lang }) => {
         <div className="relative">
           
           {/* Continuous Connecting Line for Desktop */}
-          <div className="hidden lg:block absolute top-7 left-12 right-12 h-0.5 bg-[#70B0B0]/30 z-0" />
+          <div data-reveal="fade" className="journey-line hidden lg:block absolute top-7 left-12 right-12 h-0.5 bg-[#70B0B0]/30 z-0" />
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10 text-start">
             {t.steps.map((step, index) => (
               <div
                 key={index}
                 id={`journey-step-${index}`}
+                data-reveal
+                style={{ '--reveal-delay': `${index * 110}ms` } as React.CSSProperties}
                 className="relative flex flex-col space-y-4 group"
               >
                 {/* Step Indicator Dot & Number */}

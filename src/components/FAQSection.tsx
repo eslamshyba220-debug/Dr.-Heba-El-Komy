@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { CONTENT } from '../data/content';
-import { Plus, Minus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 interface FAQSectionProps {
   lang: Language;
@@ -16,7 +16,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ lang }) => {
   };
 
   return (
-    <section id="faq" className="py-24 lg:py-32 bg-white relative">
+    <section id="faq" data-reveal className="py-24 lg:py-32 bg-white relative">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         
         {/* Section Header with Number */}
@@ -50,6 +50,8 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ lang }) => {
               <div
                 key={index}
                 id={`faq-item-${index}`}
+                data-reveal
+                style={{ '--reveal-delay': `${index * 55}ms` } as React.CSSProperties}
                 className="border-b border-[#183333]/10 transition-colors"
               >
                 <button
@@ -72,17 +74,19 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ lang }) => {
                         : 'border-[#183333]/20 text-[#183333] group-hover:border-[#70B0B0] group-hover:text-[#70B0B0]'
                     }`}
                   >
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    <Plus className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`} />
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-2 pb-8 pt-1 animate-in fade-in-50 duration-200 text-start">
+                <div className={`faq-answer-grid ${isOpen ? 'faq-answer-grid--open' : ''}`} aria-hidden={!isOpen}>
+                  <div className="overflow-hidden">
+                    <div className="px-2 pb-8 pt-1 text-start">
                     <p className="text-base sm:text-lg text-[#667575] leading-relaxed max-w-4xl font-normal">
                       {item.answer}
                     </p>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

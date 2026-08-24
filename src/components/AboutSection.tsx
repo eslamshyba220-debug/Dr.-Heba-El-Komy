@@ -11,7 +11,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
   const t = CONTENT[lang].about;
 
   return (
-    <section id="about" className="py-24 lg:py-32 bg-[#FAF9F6] relative overflow-hidden">
+    <section id="about" data-reveal className="py-24 lg:py-32 bg-[#FAF9F6] relative overflow-hidden">
       {/* Subtle background divider line */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
@@ -34,7 +34,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left / Typography Column (7 cols) */}
-          <div className="lg:col-span-7 space-y-8 text-start">
+          <div data-reveal className="lg:col-span-7 space-y-8 text-start">
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#183333] leading-tight">
               {t.headline}
             </h3>
@@ -52,7 +52,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
               </h4>
               <div className="space-y-3">
                 {t.philosophyPoints.map((point, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                  <div key={index} data-reveal style={{ '--reveal-delay': `${index * 70}ms` } as React.CSSProperties} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#70B0B0] shrink-0 mt-0.5" />
                     <span className="text-sm sm:text-base text-[#183333]/90 leading-normal">{point}</span>
                   </div>
@@ -76,11 +76,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
           </div>
 
           {/* Right / Overlapping Image Showcase (5 cols) */}
-          <div className="lg:col-span-5 relative">
+          <div data-reveal="scale" style={{ '--reveal-delay': '120ms' } as React.CSSProperties} className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               {/* Asymmetric Outer Frame */}
-              <div className="relative rounded-2xl overflow-hidden border border-[#70B0B0]/30 shadow-[0_20px_40px_rgba(24,51,51,0.06)] bg-white">
+              <div data-reveal className="image-reveal relative rounded-2xl overflow-hidden border border-[#70B0B0]/30 shadow-[0_20px_40px_rgba(24,51,51,0.06)] bg-white">
                 <img
                   src="/2.jpg"
                   alt="د. هبة الكومي"

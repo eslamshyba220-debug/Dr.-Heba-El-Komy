@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
   };
 
   return (
-    <footer id="main-footer" className="bg-[#112525] text-white pt-16 pb-28 lg:pb-16 border-t border-[#70B0B0]/20">
+    <footer id="main-footer" data-reveal className="bg-[#112525] text-white pt-16 pb-28 lg:pb-16 border-t border-[#70B0B0]/20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Main Footer Row */}

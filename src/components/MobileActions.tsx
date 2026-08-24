@@ -22,7 +22,7 @@ export const MobileActions: React.FC<MobileActionsProps> = ({ lang, onBookClick 
         <a
           id="mobile-action-call"
           href="tel:+201556400998"
-          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white border border-[#183333]/15 text-[#183333] hover:bg-black/5 transition-colors text-center"
+          className="premium-cta flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white border border-[#183333]/15 text-[#183333] hover:bg-black/5 transition-colors text-center"
         >
           <Phone className="w-4 h-4 text-[#70B0B0] mb-0.5" />
           <span className="text-[11px] font-semibold">{t.callNow}</span>
@@ -36,7 +36,7 @@ export const MobileActions: React.FC<MobileActionsProps> = ({ lang, onBookClick 
           )}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white border border-[#183333]/15 text-[#183333] hover:bg-black/5 transition-colors text-center"
+          className="premium-cta flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white border border-[#183333]/15 text-[#183333] hover:bg-black/5 transition-colors text-center"
         >
           <MessageSquare className="w-4 h-4 text-[#70B0B0] mb-0.5" />
           <span className="text-[11px] font-semibold">{t.whatsapp}</span>
@@ -46,7 +46,7 @@ export const MobileActions: React.FC<MobileActionsProps> = ({ lang, onBookClick 
         <button
           id="mobile-action-book"
           onClick={onBookClick}
-          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#70B0B0] text-white hover:bg-[#5FA1A1] transition-colors text-center cursor-pointer shadow-xs"
+          className="premium-cta flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#70B0B0] text-white hover:bg-[#5FA1A1] transition-colors text-center cursor-pointer shadow-xs"
         >
           <Calendar className="w-4 h-4 mb-0.5" />
           <span className="text-[11px] font-semibold">{t.bookNow}</span>

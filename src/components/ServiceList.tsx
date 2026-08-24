@@ -19,7 +19,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
   };
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-white relative">
+    <section id="services" data-reveal className="py-24 lg:py-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
@@ -46,7 +46,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
 
         {/* Editorial Service Rows (NO CARDS - Minimalist List) */}
         <div className="border-t border-[#183333]/15">
-          {t.items.map((service) => {
+          {t.items.map((service, index) => {
             const isExpanded = expandedId === service.id;
             const isHovered = hoveredId === service.id;
 
@@ -54,6 +54,8 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
               <div
                 key={service.id}
                 id={`service-row-${service.id}`}
+                data-reveal
+                style={{ '--reveal-delay': `${index * 75}ms` } as React.CSSProperties}
                 onMouseEnter={() => setHoveredId(service.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 className={`border-b border-[#183333]/10 transition-all duration-300 ${
@@ -63,7 +65,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
                 {/* Main Interactive Service Row */}
                 <div
                   onClick={() => toggleExpand(service.id)}
-                  className="py-7 sm:py-9 px-4 sm:px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 cursor-pointer select-none group"
+                  className="service-row-trigger py-7 sm:py-9 px-4 sm:px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 cursor-pointer select-none group"
                 >
                   {/* Left: Number + Title + Subtitle */}
                   <div className="flex items-start md:items-center gap-6 sm:gap-8 text-start flex-1">
@@ -197,7 +199,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
                           <button
                             id={`book-service-btn-${service.id}`}
                             onClick={() => onSelectServiceForBooking(service.id)}
-                            className="w-full flex items-center justify-center gap-2 bg-[#70B0B0] hover:bg-[#5FA1A1] text-white py-3 px-4 rounded-xl font-medium text-sm transition-colors cursor-pointer"
+                            className="premium-cta w-full flex items-center justify-center gap-2 bg-[#70B0B0] hover:bg-[#5FA1A1] text-white py-3 px-4 rounded-xl font-medium text-sm transition-colors cursor-pointer"
                           >
                             <Calendar className="w-4 h-4" />
                             <span>{t.bookThisService}</span>
@@ -212,7 +214,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
                             )}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full flex items-center justify-center gap-2 bg-white hover:bg-white/80 border border-[#183333]/15 text-[#183333] py-2.5 px-4 rounded-xl text-xs font-medium transition-colors"
+                            className="premium-cta w-full flex items-center justify-center gap-2 bg-white hover:bg-white/80 border border-[#183333]/15 text-[#183333] py-2.5 px-4 rounded-xl text-xs font-medium transition-colors"
                           >
                             <MessageSquare className="w-4 h-4 text-[#70B0B0]" />
                             <span>{lang === 'ar' ? 'استشارة سريعة عبر واتساب' : 'Quick Inquiry via WhatsApp'}</span>
