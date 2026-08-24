@@ -1,8 +1,8 @@
 import { ServiceItem, PrincipleItem, JourneyStep, FAQItem, GalleryItem, ClinicInfo } from '../types';
 
-export const DOCTOR_PORTRAIT_URL = '/src/assets/images/dr_heba_portrait_1787485274819.jpg';
-export const CLINIC_SUITE_URL = '/src/assets/images/dr_clinic_suite_1787485289256.jpg';
-export const SURGERY_TECH_URL = '/src/assets/images/dr_surgery_tech_1787485305435.jpg';
+export const DOCTOR_PORTRAIT_URL = '/4.jpg';
+export const CLINIC_SUITE_URL = '/3.jpg';
+export const SURGERY_TECH_URL = '/5.jpg';
 
 export const CONTENT = {
   ar: {
@@ -256,7 +256,7 @@ export const CONTENT = {
           title: 'د. هبة الكومي - استشاري الجراحة',
           category: 'الفريق الطبي',
           imageSrc: DOCTOR_PORTRAIT_URL,
-          altText: 'صورة الدكتورة هبة الكومي',
+          altText: 'د. هبة الكومي - استشاري الجراحة',
           description: 'خبرة جراحية استشارية متقدمة في جراحات المناظير والسمنة وجراحات الشرج بالليزر.',
         },
         {

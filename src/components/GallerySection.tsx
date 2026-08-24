@@ -55,6 +55,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
               <img
                 src={heroItem.imageSrc}
                 alt={heroItem.altText}
+                width={1920}
+                height={1080}
                 referrerPolicy="no-referrer"
                 className="w-full h-80 sm:h-[480px] object-cover object-center transform group-hover:scale-103 transition-transform duration-700 opacity-95 group-hover:opacity-100"
               />
@@ -92,6 +94,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
                 <img
                   src={doctorItem.imageSrc}
                   alt={doctorItem.altText}
+                  width={1920}
+                  height={1080}
                   referrerPolicy="no-referrer"
                   className="w-full h-56 sm:h-64 object-cover object-top transform group-hover:scale-103 transition-transform duration-500 opacity-95"
                 />
@@ -115,6 +119,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
                 <img
                   src={techItem.imageSrc}
                   alt={techItem.altText}
+                  width={1920}
+                  height={1080}
                   referrerPolicy="no-referrer"
                   className="w-full h-56 sm:h-64 object-cover object-center transform group-hover:scale-103 transition-transform duration-500 opacity-95"
                 />
@@ -156,6 +162,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ lang }) => {
             <img
               src={selectedItem.imageSrc}
               alt={selectedItem.altText}
+              width={1920}
+              height={1080}
               referrerPolicy="no-referrer"
               className="w-full max-h-[65vh] object-cover object-center"
             />
