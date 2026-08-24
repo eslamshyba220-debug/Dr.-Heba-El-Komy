@@ -13,10 +13,10 @@ export const Hero: React.FC<HeroProps> = ({ lang, onBookClick }) => {
   const isRtl = lang === 'ar';
 
   const bottomRailItems = [
-    { number: '01', title: lang === 'ar' ? 'جراحات السمنة' : 'Bariatric Surgery', target: '#services' },
+    { number: '01', title: lang === 'ar' ? 'جراحات السمنة والكبسولة الذكية' : 'Bariatric Surgery & Smart Capsule', target: '#services' },
     { number: '02', title: lang === 'ar' ? 'جراحات المناظير' : 'Laparoscopic Surgery', target: '#services' },
-    { number: '03', title: lang === 'ar' ? 'الكبسولة الذكية' : 'Smart Capsule', target: '#services' },
-    { number: '04', title: lang === 'ar' ? 'جراحة الشرج بالليزر' : 'Laser Proctology', target: '#services' },
+    { number: '03', title: lang === 'ar' ? 'الجراحة العامة' : 'General Surgery', target: '#services' },
+    { number: '04', title: lang === 'ar' ? 'جراحة البواسير بالليزر' : 'Laser Hemorrhoid Surgery', target: '#services' },
   ];
 
   return (
