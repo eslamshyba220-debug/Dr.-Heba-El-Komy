@@ -329,7 +329,7 @@ export const CONTENT = {
       servicesTitle: 'الخدمات الجراحية',
       contactTitle: 'التواصل والحجز',
       disclaimer: 'المعلومات الواردة في هذا الموقع مخصصة للتثقيف الصحي والتوعية الطبية ولا تُغني بأي حال عن الفحص السريري المباشر واستشارة الطبيب المختص.',
-      copyright: 'جميع الحقوق محفوظة © ' + new Date().getFullYear() + ' د. هبة الكومي. صُمم بأعلى معايير الرعاية الرقمية.',
+      copyright: 'جميع الحقوق محفوظة © 2026 د. هبة الكومي.',
     },
   },
   en: {
@@ -656,7 +656,7 @@ export const CONTENT = {
       servicesTitle: 'Surgical Services',
       contactTitle: 'Contact & Booking',
       disclaimer: 'The content provided on this website is for health education purposes only and should never replace a direct clinical examination and medical consultation.',
-      copyright: 'All rights reserved © ' + new Date().getFullYear() + ' Dr. Heba El-Komy. Crafted to the highest standards of digital healthcare.',
+      copyright: 'All rights reserved © 2026 Dr. Heba El-Komy.',
     },
   },
 };

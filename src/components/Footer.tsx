@@ -107,8 +107,17 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
           <p className="max-w-xl leading-relaxed">
             {t.disclaimer}
           </p>
-          <p className="shrink-0">
-            {t.copyright}
+          <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:justify-start">
+            <span>{t.copyright}</span>
+            <span aria-hidden="true">•</span>
+            <a
+              href="https://www.dealsorigin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold tracking-wide text-[#70B0B0] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70B0B0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#112525] rounded-sm"
+            >
+              DEALS ORIGIN
+            </a>
           </p>
         </div>
 
