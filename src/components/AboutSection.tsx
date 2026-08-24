@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import { CONTENT, CLINIC_SUITE_URL } from '../data/content';
+import { CONTENT } from '../data/content';
 import { CheckCircle2, HeartPulse, UserCheck, Stethoscope, Sparkles } from 'lucide-react';
 
 interface AboutSectionProps {
@@ -82,8 +82,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
               {/* Asymmetric Outer Frame */}
               <div className="relative rounded-2xl overflow-hidden border border-[#70B0B0]/30 shadow-[0_20px_40px_rgba(24,51,51,0.06)] bg-white">
                 <img
-                  src={CLINIC_SUITE_URL}
-                  alt={lang === 'ar' ? 'عيادة د. هبة الكومي التخصصية' : 'Dr. Heba El-Komy Consultation Suite'}
+                  src="/2.jpg"
+                  alt="د. هبة الكومي"
+                  width={1024}
+                  height={1024}
                   referrerPolicy="no-referrer"
                   className="w-full h-80 sm:h-96 object-cover object-center transform hover:scale-103 transition-transform duration-500"
                 />
