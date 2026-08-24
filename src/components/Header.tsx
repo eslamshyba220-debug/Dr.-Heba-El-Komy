@@ -42,22 +42,21 @@ export const Header: React.FC<HeaderProps> = ({ lang, onToggleLang, onBookClick 
       }`}
     >
       <div className="w-full max-w-[1720px] mx-auto px-5 sm:px-8 xl:px-6 2xl:px-10 flex items-center justify-between gap-5">
-        {/* Brand Doctor Name Logo */}
+        {/* Official brand logo */}
         <a
           id="brand-logo-link"
           href="#home"
-          className="group flex shrink-0 flex-col items-start focus:outline-none"
+          aria-label={lang === 'ar' ? 'العودة إلى الصفحة الرئيسية - د. هبة الكومي' : 'Back to home - Dr. Heba El-Komy'}
+          className="group flex shrink-0 items-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70B0B0] focus-visible:ring-offset-2"
         >
-          <div className="whitespace-nowrap text-xl sm:text-2xl font-bold tracking-tighter leading-tight text-[#173333]">
-            {lang === 'ar' ? (
-              <>د. هبة <span className="text-[#70B0B0]">الكومي</span></>
-            ) : (
-              <>DR. HEBA <span className="text-[#70B0B0]">EL-KOMY</span></>
-            )}
-          </div>
-          <span className="mt-2 max-w-[260px] xl:max-w-none text-[9px] sm:text-[10px] text-[#70B0B0] font-semibold leading-relaxed xl:whitespace-nowrap">
-            {lang === 'ar' ? 'استشاري الجراحة العامة والمناظير وجراحات السمنة المفرطة' : 'Consultant General, Laparoscopic & Bariatric Surgeon'}
-          </span>
+          <img
+            src="/1.png"
+            alt="د. هبة الكومي"
+            width={500}
+            height={500}
+            fetchPriority="high"
+            className="block h-11 w-11 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14 object-contain"
+          />
         </a>
 
         {/* Desktop Navigation Links */}
