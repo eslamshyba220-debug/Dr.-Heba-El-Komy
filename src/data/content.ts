@@ -50,6 +50,7 @@ export const CONTENT = {
         'تشخيص شامل وفحص دقيق لتحديد الإجراء الأنسب دون تسرع جراحي.',
         'استخدام التدخل الجراحي المحدود (Minimally Invasive) لتقليل الألم والندبات.',
         'متابعة دورية مستمرة مع المريض في كافة مراحل التعافي وما بعد الجراحة.',
+        'فريق طبي نسائي بالكامل يوفر أعلى درجات الخصوصية والراحة والثقة طوال رحلة العلاج.',
       ],
     },
     services: {
@@ -353,6 +354,7 @@ export const CONTENT = {
         'Thorough clinical assessment to determine optimal interventions without unnecessary surgery.',
         'Minimally invasive techniques to minimize postoperative pain and scarring.',
         'Continuous, personalized follow-up through all phases of recovery.',
+        'An all-female medical team provides the highest levels of privacy, comfort, and trust throughout the treatment journey.',
       ],
     },
     services: {
