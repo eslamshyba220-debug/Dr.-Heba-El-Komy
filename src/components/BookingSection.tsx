@@ -16,8 +16,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ lang, preselecte
     name: '',
     phone: '',
     serviceId: preselectedServiceId || '',
-    preferredDate: '',
-    preferredTime: 'evening',
+    appointmentSlot: 'saturday',
     notes: '',
   });
 
@@ -44,11 +43,13 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ lang, preselecte
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name.trim() || !formData.phone.trim()) {
+    const selectedSlot = t.form.timeOptions.find(option => option.value === formData.appointmentSlot);
+
+    if (!formData.name.trim() || !formData.phone.trim() || !selectedSlot) {
       setErrorMessage(
         lang === 'ar'
-          ? 'يرجى إدخال الاسم ورقم الهاتف للمتابعة.'
-          : 'Please enter your full name and phone number.'
+          ? 'يرجى إدخال الاسم ورقم الهاتف واختيار موعد متاح للمتابعة.'
+          : 'Please enter your full name, phone number, and an available appointment.'
       );
       return;
     }
@@ -63,8 +64,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ lang, preselecte
 • الاسم: ${formData.name.trim()}
 • الهاتف: ${formData.phone.trim()}
 • الخدمة المطلوبة: ${serviceName}
-• التاريخ المفضل: ${formData.preferredDate || 'أقرب موعد متاح'}
-• الفترة المفضلة: ${formData.preferredTime === 'evening' ? 'مسائية (5-9 م)' : formData.preferredTime === 'afternoon' ? 'بعد الظهر (2-5 م)' : 'صباحية (11-2 م)'}
+• الموعد المختار: ${selectedSlot.label}
 ${formData.notes.trim() ? `• ملاحظات إضافية: ${formData.notes.trim()}` : ''}
 
 يرجى تأكيد الموعد المتاح من قبل إدارة العيادة. شكراً جزيلاً.`
@@ -73,8 +73,7 @@ I would like to request an appointment with Dr. Heba El-Komy:
 • Full Name: ${formData.name.trim()}
 • Phone Number: ${formData.phone.trim()}
 • Requested Service: ${serviceName}
-• Preferred Date: ${formData.preferredDate || 'Earliest available'}
-• Preferred Time: ${formData.preferredTime}
+• Selected Appointment: ${selectedSlot.label}
 ${formData.notes.trim() ? `• Additional Notes: ${formData.notes.trim()}` : ''}
 
 Please confirm the appointment details with the clinic. Thank you.`;
@@ -212,21 +211,6 @@ Please confirm the appointment details with the clinic. Thank you.`;
                   </select>
                 </div>
 
-                {/* Preferred Date */}
-                <div className="space-y-2">
-                  <label htmlFor="date-input" className="block text-xs uppercase tracking-wider font-bold text-[#183333]">
-                    {t.form.dateLabel}
-                  </label>
-                  <input
-                    id="date-input"
-                    type="date"
-                    name="preferredDate"
-                    value={formData.preferredDate}
-                    onChange={handleChange}
-                    className="w-full h-12 px-4 rounded-xl border border-[#183333]/20 bg-white focus:outline-none focus:ring-2 focus:ring-[#70B0B0] focus:border-transparent text-sm transition-all cursor-pointer"
-                  />
-                </div>
-
               </div>
 
               {/* Time Selection */}
@@ -239,16 +223,16 @@ Please confirm the appointment details with the clinic. Thank you.`;
                     <label
                       key={opt.value}
                       className={`flex items-center gap-2.5 p-3 rounded-xl border cursor-pointer transition-all text-xs font-medium ${
-                        formData.preferredTime === opt.value
+                        formData.appointmentSlot === opt.value
                           ? 'border-[#70B0B0] bg-[#70B0B0]/10 text-[#183333] font-bold shadow-xs'
                           : 'border-[#183333]/15 bg-white text-[#667575] hover:bg-black/5'
                       }`}
                     >
                       <input
                         type="radio"
-                        name="preferredTime"
+                        name="appointmentSlot"
                         value={opt.value}
-                        checked={formData.preferredTime === opt.value}
+                        checked={formData.appointmentSlot === opt.value}
                         onChange={handleChange}
                         className="text-[#70B0B0] focus:ring-[#70B0B0]"
                       />

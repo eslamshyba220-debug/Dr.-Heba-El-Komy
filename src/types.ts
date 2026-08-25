@@ -55,7 +55,6 @@ export interface BookingFormData {
   name: string;
   phone: string;
   serviceId: string;
-  preferredDate: string;
-  preferredTime: string;
+  appointmentSlot: string;
   notes: string;
 }

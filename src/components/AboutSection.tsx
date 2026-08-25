@@ -44,6 +44,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
               <p>{t.paragraph2}</p>
             </div>
 
+            <div className="inline-flex items-center gap-2.5 rounded-xl border border-[#70B0B0]/30 bg-[#F4FAF9] px-4 py-3 text-sm font-bold text-[#183333]">
+              <UserCheck className="h-5 w-5 text-[#70B0B0]" />
+              <span>{lang === 'ar' ? 'فريق طبي نسائي بالكامل' : 'An all-female medical team'}</span>
+            </div>
+
             {/* Editorial Philosophy Bullet Points */}
             <div className="pt-4 space-y-4">
               <h4 className="text-sm uppercase tracking-wider font-bold text-[#183333] flex items-center gap-2">

@@ -46,7 +46,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
 
         {/* Editorial Service Rows (NO CARDS - Minimalist List) */}
         <div className="border-t border-[#183333]/15">
-          {t.items.map((service, index) => {
+          {t.items.map(service => {
             const isExpanded = expandedId === service.id;
             const isHovered = hoveredId === service.id;
 
@@ -54,8 +54,6 @@ export const ServiceList: React.FC<ServiceListProps> = ({ lang, onSelectServiceF
               <div
                 key={service.id}
                 id={`service-row-${service.id}`}
-                data-reveal
-                style={{ '--reveal-delay': `${index * 75}ms` } as React.CSSProperties}
                 onMouseEnter={() => setHoveredId(service.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 className={`border-b border-[#183333]/10 transition-all duration-300 ${

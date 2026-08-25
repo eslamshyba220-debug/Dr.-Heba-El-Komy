@@ -16,7 +16,8 @@ export const Hero: React.FC<HeroProps> = ({ lang, onBookClick }) => {
     { number: '01', title: lang === 'ar' ? 'جراحات السمنة والكبسولة الذكية' : 'Bariatric Surgery & Smart Capsule', target: '#services' },
     { number: '02', title: lang === 'ar' ? 'جراحات المناظير' : 'Laparoscopic Surgery', target: '#services' },
     { number: '03', title: lang === 'ar' ? 'الجراحة العامة' : 'General Surgery', target: '#services' },
-    { number: '04', title: lang === 'ar' ? 'جراحة البواسير بالليزر' : 'Laser Hemorrhoid Surgery', target: '#services' },
+    { number: '04', title: lang === 'ar' ? 'جراحات الأورام' : 'Oncology Surgery', target: '#services' },
+    { number: '05', title: lang === 'ar' ? 'جراحات الشرج بالليزر' : 'Laser Proctology Surgery', target: '#services' },
   ];
 
   return (
@@ -60,6 +61,10 @@ export const Hero: React.FC<HeroProps> = ({ lang, onBookClick }) => {
                 <p data-reveal style={{ '--reveal-delay': '500ms' } as React.CSSProperties} className="text-base sm:text-lg text-[#667575] max-w-md lg:max-w-lg leading-relaxed mb-8 sm:mb-10 font-normal">
                   {t.description}
                 </p>
+                <div data-reveal style={{ '--reveal-delay': '560ms' } as React.CSSProperties} className="inline-flex w-fit items-center gap-2 rounded-full border border-[#70B0B0]/30 bg-[#F4FAF9] px-4 py-2 text-sm font-bold text-[#173333]">
+                  <ShieldCheck className="h-4 w-4 text-[#70B0B0]" />
+                  <span>{lang === 'ar' ? 'فريق طبي نسائي بالكامل' : 'An all-female medical team'}</span>
+                </div>
               </div>
 
               {/* Action Buttons */}
@@ -154,7 +159,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, onBookClick }) => {
       {/* Bottom Service Rail (Editorial ticker) */}
       <nav
         aria-label={lang === 'ar' ? 'قائمة التخصصات السريعة' : 'Quick procedure index'}
-        className="bg-white border-t border-[#70B0B0]/20 grid grid-cols-2 lg:grid-cols-4 items-center divide-y lg:divide-y-0 divide-x divide-x-reverse divide-[#70B0B0]/15 overflow-hidden"
+        className="bg-white border-t border-[#70B0B0]/20 grid grid-cols-2 lg:grid-cols-5 items-center divide-y lg:divide-y-0 divide-x divide-x-reverse divide-[#70B0B0]/15 overflow-hidden"
       >
         {bottomRailItems.map((item, idx) => (
           <a
