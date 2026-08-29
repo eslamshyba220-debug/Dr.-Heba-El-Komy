@@ -87,7 +87,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
               {/* Asymmetric Outer Frame */}
               <div className="relative rounded-2xl overflow-hidden border border-[#70B0B0]/30 shadow-[0_20px_40px_rgba(24,51,51,0.06)] bg-white">
                 <img
-                  src="/11.jpg"
+                  src="/12.jpg"
                   alt="د. هبة الكومي"
                   width={1024}
                   height={1024}
