@@ -6,7 +6,7 @@
       "has": [
         {
           "type": "host",
-          "value": ".*\\.vercel\\.app"
+          "value": "dr-heba-el-komy.vercel.app"
         }
       ],
       "destination": "https://www.drhebaelkomy.com/:path*",
