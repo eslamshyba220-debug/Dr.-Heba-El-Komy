@@ -2,6 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "dr-heba-el-komy.vercel.app" }],
+      "destination": "https://www.drhebaelkomy.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
