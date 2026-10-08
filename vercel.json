@@ -6,9 +6,15 @@
       "has": [
         {
           "type": "host",
-          "value": "dr-heba-el-komy.vercel.app"
+          "value": ".*\\.vercel\\.app"
         }
       ],
+      "destination": "https://www.drhebaelkomy.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "drhebaelkomy.com" }],
       "destination": "https://www.drhebaelkomy.com/:path*",
       "permanent": true
     }

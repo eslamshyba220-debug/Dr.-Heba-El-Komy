@@ -46,17 +46,20 @@ export const Header: React.FC<HeaderProps> = ({ lang, onToggleLang, onBookClick 
         <a
           id="brand-logo-link"
           href="#home"
-          aria-label={lang === 'ar' ? 'العودة إلى الصفحة الرئيسية - د. هبة الكومي' : 'Back to home - Dr. Heba El-Komy'}
+          aria-label={lang === 'ar' ? 'العودة إلى الصفحة الرئيسية - عيادة د. هبة الكومي' : 'Back to home - Dr. Heba El-Komy Clinic'}
           className="group flex shrink-0 items-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70B0B0] focus-visible:ring-offset-2"
         >
           <img
             src="/1.png"
-            alt="د. هبة الكومي"
+            alt="عيادة د. هبة الكومي"
             width={500}
             height={500}
             fetchPriority="high"
             className="block h-11 w-11 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14 object-contain"
           />
+          <span className="ms-2 max-w-28 sm:max-w-none text-[11px] sm:text-xs font-semibold text-[#173333]">
+            {lang === 'ar' ? 'عيادة د. هبة الكومي' : 'Dr. Heba El-Komy Clinic'}
+          </span>
         </a>
 
         {/* Desktop Navigation Links */}
