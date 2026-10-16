@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Language, BookingFormData } from '../types';
 import { CONTENT } from '../data/content';
 import { Calendar, Phone, MessageSquare, CheckCircle, Clock, AlertCircle, Sparkles } from 'lucide-react';
@@ -22,6 +22,8 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ lang, preselecte
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const pendingRequestKey = useRef<string | null>(null);
 
   // Synchronize when preselectedServiceId changes from external trigger
   useEffect(() => {
@@ -37,11 +39,13 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ lang, preselecte
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    pendingRequestKey.current = null;
     if (errorMessage) setErrorMessage('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
     const selectedSlot = t.form.timeOptions.find(option => option.value === formData.appointmentSlot);
 
@@ -57,7 +61,6 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ lang, preselecte
     const selectedServiceObj = servicesList.find(s => s.id === formData.serviceId);
     const serviceName = selectedServiceObj ? selectedServiceObj.title : (lang === 'ar' ? 'استشارة عامة' : 'General Consultation');
 
-    // Build structured WhatsApp message
     const waText = lang === 'ar'
       ? `السلام عليكم ورحمة الله وبركاته،
 أود إرسال طلب حجز موعد بعيادة د. هبة الكومي:
@@ -80,10 +83,76 @@ Please confirm the appointment details with the clinic. Thank you.`;
 
     const encodedText = encodeURIComponent(waText);
     const whatsappUrl = `https://wa.me/201556400998?text=${encodedText}`;
+    setIsSubmitting(true);
+    setErrorMessage('');
+    let whatsappWindow: Window | null = null;
 
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    setIsSubmitted(true);
+    try {
+      whatsappWindow = window.open('about:blank', '_blank');
+      if (whatsappWindow) whatsappWindow.opener = null;
+      const requestKey = pendingRequestKey.current ?? window.crypto.randomUUID();
+      pendingRequestKey.current = requestKey;
+
+      const response = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': requestKey,
+        },
+        body: JSON.stringify({
+          full_name: formData.name.trim(),
+          phone_number: formData.phone.trim(),
+          service_requested: serviceName,
+          appointment_time: selectedSlot.label,
+          notes: formData.notes.trim(),
+        }),
+      });
+      const contentType = response.headers.get('content-type')?.split(';', 1)[0].trim().toLowerCase();
+      let result: unknown = null;
+      if (contentType === 'application/json') {
+        try {
+          result = await response.json();
+        } catch {
+          result = null;
+        }
+      }
+
+      if (!response.ok) {
+        const message = response.status === 400
+          ? (lang === 'ar' ? 'يرجى مراجعة بيانات الحجز والمحاولة مرة أخرى.' : 'Please check your booking details and try again.')
+          : response.status === 503
+            ? (lang === 'ar' ? 'خدمة الحجز غير متاحة حاليًا. يرجى التواصل مع العيادة.' : 'Booking is temporarily unavailable. Please contact the clinic.')
+            : (lang === 'ar' ? 'تعذر حفظ طلب الحجز. يرجى المحاولة مرة أخرى.' : 'Unable to save your booking request. Please try again.');
+        throw new Error(message);
+      }
+
+      if (
+        !result ||
+        typeof result !== 'object' ||
+        !('id' in result) ||
+        typeof result.id !== 'string'
+      ) {
+        throw new Error(lang === 'ar' ? 'تعذر تأكيد حفظ طلب الحجز.' : 'Could not confirm that your booking was saved.');
+      }
+
+      pendingRequestKey.current = null;
+      if (whatsappWindow) {
+        whatsappWindow.location.href = whatsappUrl;
+      } else {
+        window.location.assign(whatsappUrl);
+      }
+      setIsSubmitted(true);
+    } catch (submitError) {
+      console.error('Booking submission failed.', submitError);
+      if (whatsappWindow && !whatsappWindow.closed) whatsappWindow.close();
+      setErrorMessage(
+        submitError instanceof Error
+          ? submitError.message
+          : (lang === 'ar' ? 'تعذر حفظ طلب الحجز. يرجى المحاولة مرة أخرى.' : 'Unable to save your booking request. Please try again.')
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -264,10 +333,11 @@ Please confirm the appointment details with the clinic. Thank you.`;
                 <button
                   id="submit-booking-wa-btn"
                   type="submit"
-                  className="premium-cta w-full flex items-center justify-center gap-3 bg-[#183333] hover:bg-[#112525] text-white py-4 px-6 rounded-xl font-bold text-base transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
+                  disabled={isSubmitting}
+                  className="premium-cta w-full flex items-center justify-center gap-3 bg-[#183333] hover:bg-[#112525] text-white py-4 px-6 rounded-xl font-bold text-base transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer disabled:cursor-wait disabled:opacity-60"
                 >
                   <MessageSquare className="w-5 h-5 text-[#70B0B0]" />
-                  <span>{t.form.submitButton}</span>
+                  <span>{isSubmitting ? (lang === 'ar' ? 'جارٍ حفظ الطلب...' : 'Saving request...') : t.form.submitButton}</span>
                 </button>
               </div>
 
